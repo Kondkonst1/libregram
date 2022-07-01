@@ -3,7 +3,7 @@ import {
     Injectable,
     Injector,
 } from '@angular/core';
-import {Observable} from "rxjs";
+import { Observable } from "rxjs";
 import {
     HttpClient,
     HttpParams,
@@ -15,11 +15,11 @@ export interface dd {
 
 }
 
-interface IRegisteredMethod  {
+interface IRegisteredMethod {
     flow?: Observable<IData>;
     type?: RestMethodType;
     //subject?: BehaviorSubject<IData>;
-   // intervalSubscribe?: Subscription;
+    // intervalSubscribe?: Subscription;
 }
 
 export interface IData<T = any> {
@@ -36,7 +36,7 @@ export interface IData<T = any> {
 
 export class DataService {
 
-    private socket: WebSocket;
+    // private socket: WebSocket;
     private socketUrl = '';
     private socketOpen: boolean = false;
     constructor(
@@ -44,30 +44,10 @@ export class DataService {
 
     ) {
 
-    this.init();
-        
     }
 
-        protected init(): void {
-            this.httpRequest('GET', 'http://localhost:3000/', {})
-        }
 
-        private socketConnect(): void {
-            this.socket = new WebSocket(this.socketUrl);
-            this.socket.onopen = () => {
-                this.socketOpen = true;
-           
-            };
-
-        }
-
-
-    private httpRequest(
-        method: IRegisteredMethod,
-        url: string,
-        requestParams: {lang: string},
-        requestBody: string | FormData,
-    ) {
-        return this.http.request<IData>(method.type as string, url, requestBody);
+    httpRequest() {
+        return this.http.request('GET', 'http://localhost:3000/comments');
     }
-    }
+}
