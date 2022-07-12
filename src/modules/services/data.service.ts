@@ -36,6 +36,9 @@ export interface IData<T = any> {
 
 export class DataService {
 
+    protected BASE_URL = "https://openlibrary.org/search.json?q=";
+    protected DESC_URL = "https://openlibrary.org/works/";
+
     // private socket: WebSocket;
     private socketUrl = '';
     private socketOpen: boolean = false;
@@ -47,7 +50,7 @@ export class DataService {
     }
 
 
-    httpRequest() {
-        return this.http.request('GET', 'http://localhost:3000/comments');
+    httpRequest(query: string) {
+        return this.http.request('GET', this.BASE_URL+query);
     }
 }
