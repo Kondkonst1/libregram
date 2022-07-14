@@ -18,6 +18,9 @@ import { SignupComponent } from 'src/modules/profile/components/user/components/
 import { DataService } from 'src/modules/services/data.service';
 import { LayoutsService } from 'src/modules/services/layouts.service';
 import { UserService } from 'src/modules/services/user.service';
+
+import {MatInputModule} from '@angular/material/input';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +40,7 @@ import { UserService } from 'src/modules/services/user.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    MatInputModule,
   ],
   providers: [ 
     DataService,
