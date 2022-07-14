@@ -40,7 +40,7 @@ export class DataService {
     protected DESC_URL = "https://openlibrary.org/works/";
 
     // private socket: WebSocket;
-    private socketUrl = '';
+    private socketUrl = ' ';
     private socketOpen: boolean = false;
     constructor(
         private http: HttpClient,
