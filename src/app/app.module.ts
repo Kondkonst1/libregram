@@ -14,12 +14,14 @@ import { TwitsComponent } from 'src/modules/profile/components/twits/twits.compo
 import { LoginComponent } from 'src/modules/profile/components/user/components/login/login.component';
 import { ProfileComponent } from 'src/modules/profile/components/user/components/profile/profile.component';
 import { SignupComponent } from 'src/modules/profile/components/user/components/signup/signup.component';
+import { MainMenuComponent } from 'src/modules/main-menu/main-menu.component';
 
 import { DataService } from 'src/modules/services/data.service';
 import { LayoutsService } from 'src/modules/services/layouts.service';
 import { UserService } from 'src/modules/services/user.service';
 
 import {MatInputModule} from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import {MatInputModule} from '@angular/material/input';
     LoginComponent,
     ProfileComponent,
     SignupComponent,
+    MainMenuComponent,
 
   ],
   imports: [
@@ -41,6 +44,8 @@ import {MatInputModule} from '@angular/material/input';
     AppRoutingModule,
     HttpClientModule,
     MatInputModule,
+    BrowserAnimationsModule,
+
   ],
   providers: [ 
     DataService,
