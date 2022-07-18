@@ -33,24 +33,24 @@ export class SearchComponent implements OnInit {
     
     let countResult: number = 0;
 
-    const searchStream = fromEvent(queryField, 'input')
+    const searchStream = fromEvent(queryField, 'input')         //при каждом вводе символа в инпут
       .pipe(
-        map(e => (<HTMLInputElement>e.target).value),
-        debounceTime(500),
-        distinctUntilChanged(),
-        tap(() => this.bookSubscribeWindow.innerHTML = ''),
-        filter(v => v !== ''),
-        switchMap(v => this.dataService.httpRequest(v).pipe(
-          catchError(err => EMPTY),
+        map(e => (<HTMLInputElement>e.target).value),             //сделаем массив из значений
+        debounceTime(500),                                      // Но делаем это не чаще чем раз в 500мс
+        distinctUntilChanged(),                               //если ввели harry  потом ввели harry1 и сразу удалили 1,  второй раз искать не будем
+        tap(() => this.bookSubscribeWindow.innerHTML = ''),     //в tap  пишется какая-нибудь логика вне потока, тут при новом поиске в окне результатов удаляются старые карточки
+        filter(v => v !== ''),                                      //не обрабатывать пустой запрос
+        switchMap(v => this.dataService.httpRequest(v).pipe(      //отправляем запрос - это новый поток
+          catchError(err => EMPTY),                                 //обработчик ошибки
         )),
-        map(res  => (<SearchResult>res).docs),
-        concatAll()
+        map(res  => (<SearchResult>res).docs),                      //создаем массив из полученных данных
+        concatAll()                                             // и разделяем его во времени, попробуй закомментить эту строку и глянь в консоль
       );
 
-    searchStream.subscribe((result) => {
+    searchStream.subscribe((result) => {                      // и когда это все произошлоооо...
     console.log(result);
 
-      this.outputResults(result)
+      this.outputResults(result)                                //кидаем объект с книжкой в функцию вывода
     });
   }
 
