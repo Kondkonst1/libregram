@@ -15,6 +15,7 @@ import { LoginComponent } from 'src/modules/profile/components/user/components/l
 import { ProfileComponent } from 'src/modules/profile/components/user/components/profile/profile.component';
 import { SignupComponent } from 'src/modules/profile/components/user/components/signup/signup.component';
 import { MainMenuComponent } from 'src/modules/main-menu/main-menu.component';
+import { MainLayoutComponent } from 'src/modules/main-layout/main-layout.component';
 
 import { DataService } from 'src/modules/services/data.service';
 import { LayoutsService } from 'src/modules/services/layouts.service';
@@ -37,7 +38,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ProfileComponent,
     SignupComponent,
     MainMenuComponent,
-
+    MainLayoutComponent,
   ],
   imports: [
     BrowserModule,

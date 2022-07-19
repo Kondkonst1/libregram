@@ -4,9 +4,15 @@ import { ProfileComponent } from 'src/modules/profile/components/user/components
 import { MyLibraryComponent } from 'src/modules/library/components/my-library/my-library.component';
 import { BooksFeedComponent } from 'src/modules/book-twits/components/books-feed/books-feed.component';
 import { UserListComponent } from 'src/modules/friends/components/user-list/user-list.component';
+import { MainLayoutComponent } from 'src/modules/main-layout/main-layout.component';
 
-const rootModule: RootModule = {
+const rootModule: UIRouterModule = {
   states: [
+    {
+      name: "home",
+      url: "",
+      component: MainLayoutComponent
+    },
     {
       name: "profile",
       url: "/profile",
@@ -27,8 +33,6 @@ const rootModule: RootModule = {
       url: "/friends",
       component: UserListComponent
     },
-
-
   ],
   useHash: true
 };
